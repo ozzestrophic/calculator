@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="top">
-            <div id="equation">1 + 1</div>
+            <div id="numTemp"></div>
             <div id="result">0</div>
         </div>
         <div class="bottom">
@@ -22,27 +22,27 @@
                 <button class="purple">/</button>
             </div>
             <div class="row">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
+                <button onclick="numInsert(this)">7</button>
+                <button onclick="numInsert(this)">8</button>
+                <button onclick="numInsert(this)">9</button>
                 <button class="purple">X</button>
             </div>
             <div class="row">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
+                <button onclick="numInsert(this)">4</button>
+                <button onclick="numInsert(this)">5</button>
+                <button onclick="numInsert(this)">6</button>
                 <button class="purple">-</button>
             </div>
             <div class="row">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
+                <button onclick="numInsert(this)">1</button>
+                <button onclick="numInsert(this)">2</button>
+                <button onclick="numInsert(this)">3</button>
                 <button class="purple">+</button>
             </div>
             <div class="row">
-                <button>Ans</button>
-                <button>.</button>
-                <button>0</button>
+                <button onclick="numInsert(this)">Ans</button>
+                <button onclick="numInsert(this)">.</button>
+                <button onclick="numInsert(this)">0</button>
                 <button class="purple" id="equals">=</button>
             </div>
         </div>
@@ -53,8 +53,25 @@
 
     <script>
         // register button clicks in a string numTemp
+        let num1 = '0';
+        let numTemp = '0';
+        let result = 0;
+        const numTempDiv = document.querySelector('#numTemp');
+        numTempDiv.textContent = numTemp;
+
+        function numInsert(element) {
+
+            if (numTemp == '0') {
+                numTemp= element.innerHTML;
+            } else {
+                numTemp= numTemp.concat(element.innerHTML);
+            }
+            // update the numTemp on screen
+            numTempDiv.textContent = numTemp;
             
 
+        }
+            
         // operator (x,/,+) function:
             // if numTemp !== 0 ? 
                 // if num1 ==0? num1 = numTemp, numTemp = 0, operator = (x / +)
