@@ -1,13 +1,16 @@
 body {
-    background-color: #F4F3F3;
+    background-color: #c5c0b1;
 }
 
 .container {
     background-color: #2D2A37;
     border-radius: 48px;
     margin: auto;
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0px 2px 3px 0px rgba(255, 255, 255, 0.06) inset, 0px 0px 2px 0px rgba(0, 0, 0, 0.29), 0px 2px 4px 0px rgba(0, 0, 0, 0.26), 0px 4px 6px 0px rgba(0, 0, 0, 0.10), 0px 7px 7px 0px rgba(0, 0, 0, 0.04), 0px 11px 7px 0px rgba(0, 0, 0, 0.01);
+
 
     width: fit-content;
     height: auto;

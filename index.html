@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik">
 
 </head>
 <body>
+
     <div class="container">
         <div class="top">
             <div id="numTemp"></div>
@@ -64,6 +65,9 @@
         clearBtn.addEventListener('click', clear);
 
         clear();
+
+        // window.addEventListener('keydown', e => console.log(e.code));
+
         
     
         function numInsert(element) {
@@ -195,21 +199,6 @@
         }
             
         
-
-
-
-        // register button clicks in a string
-        // if result not equal zero ? replace the equation with first input
-
-        // operator function:
-        // if string is empty?
-        // if result not equal zero ? replace equation with reuslt and add to equation
-        // if the last caracter is an operator replace it
-        // display the equation on the div
-
-        // when press '='
-        // excute the equation
-        // replace the result
         
     </script>
 </body>
