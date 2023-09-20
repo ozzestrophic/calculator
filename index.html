@@ -16,9 +16,9 @@
         </div>
         <div class="bottom">
             <div class="row">
-                <button onclick="clear()" id="ce">CE</button>
+                <button id="ce">CE</button>
                 <button onclick="deleteNum()">C</button>
-                <button>%</button>
+                <button onclick="percentage()">%</button>
                 <button onclick="operatorInsert(this)" class="purple">/</button>
             </div>
             <div class="row">
@@ -31,7 +31,7 @@
                 <button onclick="numInsert(this)">4</button>
                 <button onclick="numInsert(this)">5</button>
                 <button onclick="numInsert(this)">6</button>
-                <button onclick="operatorInsert(this)" class="purple">-</button>
+                <button onclick="insertNegative(this)" class="purple">-</button>
             </div>
             <div class="row">
                 <button onclick="numInsert(this)">1</button>
@@ -59,7 +59,10 @@
         let operator;
         const numTempDiv = document.querySelector('#numTemp');
         const resultDiv = document.querySelector('#result');
-        
+        const clearBtn = document.querySelector('#ce');
+
+        clearBtn.addEventListener('click', clear);
+
         clear();
         
     
@@ -114,9 +117,39 @@
             
 
         // minus (-) function:
+        function insertNegative(element) {
             // if numTemp !== 0 ? num1 = numTemp, operator = (x + /)
             // else : add to string
+            if (numTemp !== '0') {
+                // do we have first operand?
+                if (num1 == '0') {
+                    // this is the first operation
+                    num1 = numTemp;
+                    numTemp = '0';
+                    operator = element.innerHTML;
+                } else if (numTemp !== '-') {
+                    // this is the second operation
+                    result = getResult();
+                    num1 = result;
+                    operator = element.innerHTML;
+                    numTemp = '0';
+                }
+            } else {
+                    numTemp = '-';
+                    numTempDiv.textContent = numTemp;
+            }
+        }
+            
 
+        function percentage(element) {
+            if (result === 0) {
+                result = numTemp / 100;
+            } else {
+                result = result / 100;
+            }
+            resultDiv.textContent = result;
+            return result;
+        }
         // result function:
         function getResult() {
             // result =  Number(num1) Number(operator) Number(numTemp);
@@ -156,7 +189,6 @@
                 } else {
                     numTempDiv.textContent = numtemp = '0';
                 }
-                
             }
         }
             
