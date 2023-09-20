@@ -73,6 +73,15 @@ button:hover {
     color: #2D2A37;
 }
 
+
 .purple {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0.01%, rgba(255, 255, 255, 0.05) 100%), #462878;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0.01%, rgba(255, 255, 255, 0.05) 100%), #a9510e;
+}
+#ce {
+    color: #ed7010;
+}
+#equals {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%), #ed7010;
+    /* width: 140px;
+    height: 64px; */
 }
