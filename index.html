@@ -147,6 +147,7 @@
             } else {
                 result = result / 100;
             }
+            result = Number(result.toFixed(10));
             resultDiv.textContent = result;
             return result;
         }
@@ -165,6 +166,7 @@
                 result = Number(numTemp);
             }
             console.log(result);
+            result = Number(result.toFixed(10));
             resultDiv.textContent = result;
             return result;
             // replace the result div with result
