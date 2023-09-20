@@ -19,25 +19,25 @@
                 <button id="ce">CE</button>
                 <button>C</button>
                 <button>%</button>
-                <button class="purple">/</button>
+                <button onclick="operatorInsert(this)" class="purple">/</button>
             </div>
             <div class="row">
                 <button onclick="numInsert(this)">7</button>
                 <button onclick="numInsert(this)">8</button>
                 <button onclick="numInsert(this)">9</button>
-                <button class="purple">X</button>
+                <button onclick="operatorInsert(this)" class="purple">X</button>
             </div>
             <div class="row">
                 <button onclick="numInsert(this)">4</button>
                 <button onclick="numInsert(this)">5</button>
                 <button onclick="numInsert(this)">6</button>
-                <button class="purple">-</button>
+                <button onclick="operatorInsert(this)" class="purple">-</button>
             </div>
             <div class="row">
                 <button onclick="numInsert(this)">1</button>
                 <button onclick="numInsert(this)">2</button>
                 <button onclick="numInsert(this)">3</button>
-                <button class="purple">+</button>
+                <button onclick="operatorInsert(this)" class="purple">+</button>
             </div>
             <div class="row">
                 <button onclick="numInsert(this)">Ans</button>
@@ -56,7 +56,9 @@
         let num1 = '0';
         let numTemp = '0';
         let result = 0;
+        let operator = '';
         const numTempDiv = document.querySelector('#numTemp');
+        const resultDiv = document.querySelector('#result');
         numTempDiv.textContent = numTemp;
 
         function numInsert(element) {
@@ -68,24 +70,56 @@
             }
             // update the numTemp on screen
             numTempDiv.textContent = numTemp;
-            
-
         }
             
+
+
         // operator (x,/,+) function:
+        function operatorInsert(element) {
             // if numTemp !== 0 ? 
-                // if num1 ==0? num1 = numTemp, numTemp = 0, operator = (x / +)
-                // else return result() -- register result in num1, operator = (x + /), numTemp = 0
-            // else : do nothing
+            if (numTemp !==0) {
+                // do we have first operand?
+                if (num1 == 0) {
+                    // this is the first operation
+                    num1 = numTemp;
+                    numTemp = 0;
+                    operator = element.innerHTML;
+                } else {
+                    // this is the second operation
+                    result = getResult();
+                    num1 = result;
+                    operator = element.innerHTML;
+                    numTemp = '0';
+
+                }
+            }
+        }
+            
 
         // minus (-) function:
             // if numTemp !== 0 ? num1 = numTemp, operator = (x + /)
             // else : add to string
 
         // result function:
+        function getResult() {
             // result =  Number(num1) Number(operator) Number(numTemp);
+            if (operator == '+') {
+                result = Number(num1) + Number(numTemp);
+            } else if (operator == '-') {
+                result = Number(num1) - Number(numTemp);
+            } else if (operator == 'X') {
+                result = Number(num1) * Number(numTemp);
+            } else if (operator == '/') {
+                result = Number(num1) / Number(numTemp);
+            }
+            
+            console.log(result);
+            resultDiv.textContent = result;
+            return result;
             // replace the result div with result
             // return result;
+        }
+            
         
 
 
