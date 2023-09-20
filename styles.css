@@ -1,0 +1,31 @@
+body {
+    background-color: #F4F3F3;
+}
+
+.container {
+    background-color: #202020;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+}
+button {
+    background-color: #D4D0CC;
+    font-weight: 700;
+    border-radius: 10px;
+    border-style: hidden;
+    padding: 2rem;
+    flex: 1;
+    width: 120px;
+    aspect-ratio: 1 /1;
+}
