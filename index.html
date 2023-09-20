@@ -165,7 +165,15 @@
             } else if (operator == 'X') {
                 result = Number(num1) * Number(numTemp);
             } else if (operator == '/') {
-                result = Number(num1) / Number(numTemp);
+                if (numTemp == '0') {
+                    // result = "Can't divide by 0"
+                    resultDiv.textContent = "Can't divide by 0";
+                    result = 0;
+                    return result;
+                } else {
+                    result = Number(num1) / Number(numTemp);
+
+                }
             } else if (num1 == '0') {
                 result = Number(numTemp);
             }
