@@ -16,8 +16,8 @@
         </div>
         <div class="bottom">
             <div class="row">
-                <button id="ce">CE</button>
-                <button>C</button>
+                <button onclick="clear()" id="ce">CE</button>
+                <button onclick="deleteNum()">C</button>
                 <button>%</button>
                 <button onclick="operatorInsert(this)" class="purple">/</button>
             </div>
@@ -40,10 +40,10 @@
                 <button onclick="operatorInsert(this)" class="purple">+</button>
             </div>
             <div class="row">
-                <button onclick="numInsert(this)">Ans</button>
-                <button onclick="numInsert(this)">.</button>
+                <button onclick="insertANS(this)">Ans</button>
                 <button onclick="numInsert(this)">0</button>
-                <button class="purple" id="equals">=</button>
+                <button onclick="insertDot(this)">.</button>
+                <button onclick="getResult()" class="purple" id="equals">=</button>
             </div>
         </div>
     </div>
@@ -53,25 +53,42 @@
 
     <script>
         // register button clicks in a string numTemp
-        let num1 = '0';
-        let numTemp = '0';
-        let result = 0;
-        let operator = '';
+        let num1;
+        let numTemp;
+        let result;
+        let operator;
         const numTempDiv = document.querySelector('#numTemp');
         const resultDiv = document.querySelector('#result');
-        numTempDiv.textContent = numTemp;
-
+        
+        clear();
+        
+    
         function numInsert(element) {
 
             if (numTemp == '0') {
-                numTemp= element.innerHTML;
+                numTemp = element.innerHTML;
             } else {
-                numTemp= numTemp.concat(element.innerHTML);
+                numTemp = numTemp.concat(element.innerHTML);
             }
             // update the numTemp on screen
             numTempDiv.textContent = numTemp;
         }
-            
+        
+        function insertDot(element) {
+            if (numTemp == '0') {
+                numTemp = element.innerHTML;
+            } else if (!numTemp.includes(".")) {
+                numTemp = numTemp.concat(element.innerHTML);
+            }
+            numTempDiv.textContent = numTemp;
+        }
+
+        function insertANS(element) {
+            numTemp = String(result);
+            num1 = '0';
+            result = 0;
+            numTempDiv.textContent = numTemp;
+        }
 
 
         // operator (x,/,+) function:
@@ -111,13 +128,36 @@
                 result = Number(num1) * Number(numTemp);
             } else if (operator == '/') {
                 result = Number(num1) / Number(numTemp);
+            } else if (num1 == '0') {
+                result = Number(numTemp);
             }
-            
             console.log(result);
             resultDiv.textContent = result;
             return result;
             // replace the result div with result
             // return result;
+        }
+
+        function clear() {
+            num1 = '0';
+            numTemp = '0';
+            result = 0;
+            operator = '';
+            console.log('num1 = ' + num1 + ',numTemp = ' + numTemp + ',result = ' + result);
+            numTempDiv.textContent = numTemp;
+            resultDiv.textContent = result;
+        }
+
+        function deleteNum() {
+            if (numTemp !== '0') {
+                if (numTemp.length !== 1){
+                    numTemp = numTemp.slice(0, -1);
+                    numTempDiv.textContent = numTemp;
+                } else {
+                    numTempDiv.textContent = numtemp = '0';
+                }
+                
+            }
         }
             
         
